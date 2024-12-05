@@ -28,11 +28,21 @@ def criar():
         (%s,%s,%s)
         ''',('joabe',21,'informática')
     )
+    
 def atualizar():
     cursor.execute(
         '''UPDATE aluno SET nome =%s,idade=%s, curso=%s Where id=%s VALUES
            (%s,%s,%s)
         ''',('Radla',20,'Agro',4)
     )
+
 def deletar():
     cursor.execute('''DELETE FROM aluno WHERE id=%s''',(5))
+
+def listar():
+    cursor.execute(
+        '''select * from alunos'''
+    )
+    alunos = cursor.fetchall()
+    for aluno in alunos:
+        print(aluno)

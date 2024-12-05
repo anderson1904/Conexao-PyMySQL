@@ -53,3 +53,16 @@ def atualizar():
 #função para deletar uma tabela
 def deletar():
     cursor.execute('''DELETE FROM aluno WHERE id=%s''',(5))
+#para listar uma tabela
+def listar():
+    cursor.execute(
+        '''select * from alunos'''
+    )
+    #aluno armazena os resultados do comando SQL em 'alunos'
+    alunos = cursor.fetchall()
+    '''
+    cursor.fetchall()-> armazena o resultado de todas os comandos execultados na função
+    cursor.fetchone()-> armazena apenas um dos comandos
+    '''
+    for aluno in alunos:
+        print(aluno)

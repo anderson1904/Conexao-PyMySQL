@@ -48,3 +48,10 @@ def atualizar(
     )
 def deletar(id: int):
     cursor.execute('''DELETE FROM aluno WHERE id=%s''',(id))
+def listar():
+    cursor.execute(
+        '''select * from alunos'''
+    )
+    alunos = cursor.fetchall()
+    for aluno in alunos:
+        print(aluno)
