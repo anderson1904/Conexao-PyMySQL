@@ -11,3 +11,10 @@ conexao = pymysql.connect(
 cursor = conexao.cursor()#cria um cursor para a conexão com o mysql
 #caso não ocorra erro, essa mensagem aparecerá
 print('Conexão realizada com sucesso')
+
+''' cursor.execute(comando) -> execulta um comando sql no servidor MySQL
+    o comando cria um banco de dados chamado escola(caso esse banco não exista)'''
+
+cursor.execute(
+    'Create DATABASE IF NOT EXISTS Escola'
+)
