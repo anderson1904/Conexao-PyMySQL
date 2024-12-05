@@ -16,5 +16,17 @@ print('Conexão realizada com sucesso')
     o comando cria um banco de dados chamado escola(caso esse banco não exista)'''
 
 cursor.execute(
-    'Create DATABASE IF NOT EXISTS Escola'
+    'CREATE DATABASE IF NOT EXISTS Escola;'
+)
+#criando uma tabela: esse 'execute' será um novo bloco de comandos sql a ser execultado
+cursor.execute(
+    '''CREATE TABLE IF NOT EXISTS Aluno(
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(50),
+    Idade INT,
+    Curso VARCHAR(50)
+    );'''
+)
+cursor.execulte(
+    
 )
