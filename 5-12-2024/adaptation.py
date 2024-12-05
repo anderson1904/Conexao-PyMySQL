@@ -1,5 +1,8 @@
 import pymysql
-
+'''
+mesma coisa, mas com adaptações minhas,não sei se deu certo
+pois meu computador não possue o Xampp funcionando
+'''
 conexao = pymysql.connect(
     host= 'localhost',
     user= 'root',
@@ -22,17 +25,26 @@ cursor.execute(
     Curso VARCHAR(50)
     );'''
 )
-def criar():
+def criar(
+    nome: str,
+    idade:int,
+    curso:str
+    ):
     cursor.execulte(
         ''' INSERT INTO Aluno (nome,idade, curso) Values
         (%s,%s,%s)
-        ''',('joabe',21,'informática')
+        ''',(nome,idade,curso)
     )
-def atualizar():
+def atualizar(
+    nome: str,
+    idade:int,
+    curso:str,
+    id:int,):
+
     cursor.execute(
         '''UPDATE aluno SET nome =%s,idade=%s, curso=%s Where id=%s VALUES
            (%s,%s,%s)
-        ''',('Radla',20,'Agro',4)
+        ''',(nome,idade,curso,id)
     )
-def deletar():
-    cursor.execute('''DELETE FROM aluno WHERE id=%s''',(5))
+def deletar(id: int):
+    cursor.execute('''DELETE FROM aluno WHERE id=%s''',(id))

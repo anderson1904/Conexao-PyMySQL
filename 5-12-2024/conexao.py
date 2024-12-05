@@ -16,8 +16,10 @@ cursor = conexao.cursor()#cria um cursor para a conexão com o mysql
 #caso não ocorra erro, essa mensagem aparecerá
 print('Conexão realizada com sucesso')
 
-''' cursor.execute(comando) -> execulta um comando sql no servidor MySQL
-    o comando cria um banco de dados chamado escola(caso esse banco não exista)'''
+'''
+cursor.execute(comando) -> execulta um comando sql no servidor MySQL
+o comando cria um banco de dados chamado escola(caso esse banco não exista)
+'''
 
 cursor.execute(
     'CREATE DATABASE IF NOT EXISTS Escola;'
@@ -31,10 +33,23 @@ cursor.execute(
     Curso VARCHAR(50)
     );'''
 )
-'''faz a inserção dos dados na tabela aluno'''
+'''
+função para a inserção dos dados na tabela aluno
+'''
 # %s -> indica que naquele campo possuirá uma string
-cursor.execulte(
-    ''' INSERT INTO Aluno (nome,idade, curso) Values
-    (%s,%s,%s)
-    ''',('joabe',21,'informática')
-)
+def criar():
+    cursor.execulte(
+        ''' INSERT INTO Aluno (nome,idade, curso) Values
+        (%s,%s,%s)
+        ''',('joabe',21,'informática')
+    )
+#função para atualização
+def atualizar():
+    cursor.execute(
+        '''UPDATE aluno SET nome =%s,idade=%s, curso=%s Where id=%s VALUES
+           (%s,%s,%s)
+        ''',('Radla',20,'Agro',4)
+    )
+#função para deletar uma tabela
+def deletar():
+    cursor.execute('''DELETE FROM aluno WHERE id=%s''',(5))
