@@ -1,16 +1,19 @@
-import conexao
+# Puxando o arquivo com a coneção e as funções sql
 from conexao import *
-
+# erros da anterior foram corrigidos
 while True:
-    print('''
-    bem vindo ao Varejo do Erivaldo:
+    print('''\n
+    Bem Vindo ao Varejo do Erivaldo:
+    
+    funcionários do mês: Anderson e Sostenes
 
     C -> cadastrar produto
     R -> ler a lista de produtos
     U -> atualizar o banco de dados
     D -> excluir um produto
     S -> buscar produto
-    qualquer tecla -> sair
+
+    Qualquer Outra Tecla -> sair\n
     ''')
 
     escolha = input('Digite sua Escolha: ').upper()
@@ -23,7 +26,8 @@ while True:
         print('produto criado com sucesso')
     
     elif escolha == 'R':
-        listar() 
+        print('Lista dos Produtos Cadastrados:')
+        listar()
     
     elif escolha == 'U':
         nome = input('nome do produto: ')
@@ -44,3 +48,5 @@ while True:
     
     else:
         break
+
+print("\nPrograma Encerrado")
