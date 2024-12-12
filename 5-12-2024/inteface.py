@@ -9,7 +9,7 @@ while True:
     D -> excluir um aluno
     qualquer tecla -> sair
     ''')
-    escolha = input('digite sua escolha')
+    escolha = input('digite sua escolha').upper()
     match escolha:
         case 'C':
             nome = input('nome do aluno: ')
@@ -30,6 +30,10 @@ while True:
             id = int(input('id do aluno: '))
             deletar(id)
             print('aluno deletado com sucesso')
+        case _:
+            break
+
+print("programa encerrado")
 
 
 
