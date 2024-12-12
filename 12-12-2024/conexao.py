@@ -1,5 +1,5 @@
 import pymysql
-
+#sabem o que isso signifa
 conexao = pymysql.connect(
     host= 'localhost',
     user= 'root',
@@ -7,6 +7,7 @@ conexao = pymysql.connect(
     database= 'loja',
     autocommit= True,
 )
+
 cursor = conexao.cursor()
 
 print('Conexão realizada com sucesso')
@@ -23,11 +24,11 @@ cursor.execute(
     Preco Float
     );'''
 )
-
+#esqueci de avisar: esse negocio de Nome: str e etc é só uma boa prática
 def criar(
     nome: str,
-    quantidade:int,
-    Preco:float,
+    quantidade: int,
+    Preco: float,
     ):
     cursor.execute(
         ''' INSERT INTO Produto (nome,quantidade, Preco) Values
@@ -37,9 +38,9 @@ def criar(
 
 def atualizar(
     nome: str,
-    quantidade:int,
-    Preco:float,
-    id:int,
+    quantidade: int,
+    Preco: float,
+    id: int,
     ):
 
     cursor.execute(
@@ -54,15 +55,29 @@ def listar():
     cursor.execute(
         '''select * from Produto'''
     )
+
     Produtos = cursor.fetchall()
     for Produto in Produtos:
         print(Produto)
 
+#aqui adicionamos a função buscar
 def buscar(nome: str):
     cursor.execute(
     '''select * from Produto where Nome =%s''',nome)
     
-    Produtos = cursor.fetchone()
+    Produtos = cursor.fetchall()
+
     for Produto in Produtos:
-        print(Produto)
+        #isso aqui é meramente estético
+        dicionario ={
+            "ID": Produto[0],
+            "Nome": Produto[1],
+            "estoque": Produto[2],
+            "preço": Produto[3]
+        }
+        for i in dicionario:
+            print(f'{i}: {dicionario[i]}')
+
+    if not Produto:
+        print("produto não cadastrado")
     
