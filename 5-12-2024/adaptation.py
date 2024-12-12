@@ -29,7 +29,7 @@ def criar(
     nome: str,
     idade:int,
     curso:str
-    ):
+):
     cursor.execulte(
         ''' INSERT INTO Aluno (nome,idade, curso) Values
         (%s,%s,%s)
@@ -39,11 +39,11 @@ def atualizar(
     nome: str,
     idade:int,
     curso:str,
-    id:int,):
+    id:int,
+):
 
     cursor.execute(
-        '''UPDATE aluno SET nome =%s,idade=%s, curso=%s Where id=%s VALUES
-           (%s,%s,%s)
+        '''UPDATE aluno SET nome =%s,idade=%s, curso=%s Where id=%s
         ''',(nome,idade,curso,id)
     )
 def deletar(id: int):
